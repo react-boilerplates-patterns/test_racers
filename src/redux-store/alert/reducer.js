@@ -1,4 +1,4 @@
-import { AlertActionTypes } from "./actions";
+import {AlertActionTypes} from './actions';
 
 export const initialState = {
   isVisible: false,
@@ -11,8 +11,7 @@ export const initialState = {
 export function alertReducer(state = initialState, action) {
   switch (action.type) {
     case AlertActionTypes.SHOW_ALERT: {
-      const { payload } = action;
-      // console.log("alertReducer -> payload", payload);
+      const {payload} = action;
 
       return {
         isVisible: true,

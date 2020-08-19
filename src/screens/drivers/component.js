@@ -1,28 +1,19 @@
-import React from "react";
-import { BackgroundView } from "@components/backgound-view";
-import { DriversList } from "@components/drivers-list";
-import { Button } from "@components/button";
-import { IconArrow } from "@components/icon-arrow";
-import { styles } from "./styles";
-import { View, Text } from "react-native";
-import { useHandlers } from "./hooks/use-handlers";
-import { useRoute } from "@react-navigation/native";
-import { useGetDrivers } from "./hooks/use-get-drivers";
-import { useSelectors } from "./hooks/use-selectors";
-import Spinner from "react-native-loading-spinner-overlay";
-import { EmptyList } from "../../components/emty-list";
+import React from 'react';
+import {BackgroundView} from '@components/backgound-view';
+import {DriversList} from '@components/drivers-list';
+import {useGetDrivers} from './hooks/use-get-drivers';
+import {useSelectors} from './hooks/use-selectors';
+import Spinner from 'react-native-loading-spinner-overlay';
+import {EmptyList} from '../../components/emty-list';
+import {DriversBottomNavigation} from './components/bottom-navigation';
+import {useRoute} from '@react-navigation/native';
 
 export const DriversScreen = () => {
-  const { params } = useRoute();
-  const { driverId, season, limit } = params;
-  const { data, dataIsLoading, offset, isLastPage, error } = useSelectors();
-  const { nextPage, previousPage } = useHandlers({
-    driverId,
-    limit,
-    season,
-    offset,
-  });
-  useGetDrivers({ driverId, season, limit });
+  const {params} = useRoute();
+  const {driverId, season, limit} = params;
+  const {data, dataIsLoading} = useSelectors();
+
+  useGetDrivers({driverId, season, limit});
 
   return (
     <BackgroundView>
@@ -31,25 +22,10 @@ export const DriversScreen = () => {
       ) : (
         <>
           {data.length === 0 ? <EmptyList /> : <DriversList list={data} />}
-          <View style={styles.buttonsBlock}>
-            <Button
-              loading={dataIsLoading}
-              iconComponent={<IconArrow direction="arrow-left-circle" />}
-              buttonStyle={styles.button}
-              onPress={previousPage}
-              disabled={offset <= 0 ? true : false}
-              disabledStyle={styles.notDisplay}
-            />
-
-            <Button
-              loading={dataIsLoading}
-              iconComponent={<IconArrow direction="arrow-right-circle" />}
-              buttonStyle={styles.button}
-              onPress={nextPage}
-              disabled={isLastPage}
-              disabledStyle={styles.notDisplay}
-            />
-          </View>
+          <DriversBottomNavigation
+            isLoading={dataIsLoading}
+            driverData={{driverId, season, limit}}
+          />
         </>
       )}
     </BackgroundView>

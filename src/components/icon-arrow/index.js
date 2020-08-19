@@ -1,6 +1,6 @@
-import React from "react";
-import { SimpleLineIcons } from "@expo/vector-icons";
+import React from 'react';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-export const IconArrow = ({ direction }) => {
-  return <SimpleLineIcons name={direction} size={24} color="black" />;
+export const IconArrow = ({direction}) => {
+  return <Icon name={direction} size={24} color="black" />;
 };
