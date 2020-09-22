@@ -1,31 +1,31 @@
 import React from 'react';
-import {BackgroundView} from '@components/backgound-view';
-import {DriversList} from '@components/drivers-list';
+import {BackgroundView} from 'components/backgound-view';
 import {useGetDrivers} from './hooks/use-get-drivers';
 import {useSelectors} from './hooks/use-selectors';
 import Spinner from 'react-native-loading-spinner-overlay';
-import {EmptyList} from '../../components/emty-list';
-import {DriversBottomNavigation} from './components/bottom-navigation';
-import {useRoute} from '@react-navigation/native';
+import {EmptyList} from 'components/emty-list';
+import {DataTable} from 'components/data-table';
 
 export const DriversScreen = () => {
-  const {params} = useRoute();
-  const {driverId, season, limit} = params;
-  const {data, dataIsLoading} = useSelectors();
+  const {drivers, driversAreLoading, offset, totalDrivers} = useSelectors();
 
-  useGetDrivers({driverId, season, limit});
+  useGetDrivers();
 
   return (
     <BackgroundView>
-      {!data ? (
-        <Spinner visible={dataIsLoading} />
+      {!drivers ? (
+        <Spinner visible={driversAreLoading} />
       ) : (
         <>
-          {data.length === 0 ? <EmptyList /> : <DriversList list={data} />}
-          <DriversBottomNavigation
-            isLoading={dataIsLoading}
-            driverData={{driverId, season, limit}}
-          />
+          {!drivers.length ? (
+            <EmptyList />
+          ) : (
+            <DataTable
+              drivers={drivers}
+              offset={offset}
+              totalDrivers={totalDrivers}
+            />
+          )}
         </>
       )}
     </BackgroundView>

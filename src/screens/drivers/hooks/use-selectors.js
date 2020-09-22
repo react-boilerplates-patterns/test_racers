@@ -1,13 +1,24 @@
-import { useSelector } from "react-redux";
-
-import { requestsSelectors, navigationSelectors } from "@redux-store";
+import {useSelector} from 'react-redux';
+import {requestsSelectors} from 'redux-store';
 
 export const useSelectors = () => {
-  const data = useSelector(requestsSelectors.drivers.getData);
-  const dataIsLoading = useSelector(requestsSelectors.drivers.getDataIsLoading);
+  const drivers = useSelector(
+    requestsSelectors.drivers.getPaginatedDriversData,
+  );
+  const driversAreLoading = useSelector(
+    requestsSelectors.drivers.getIsLoadingPaginatedData,
+  );
+
+  const offset = useSelector(requestsSelectors.drivers.getOffset);
+
+  const totalDrivers = useSelector(
+    requestsSelectors.drivers.getTotalDriversAmount,
+  );
 
   return {
-    data,
-    dataIsLoading,
+    drivers,
+    driversAreLoading,
+    offset,
+    totalDrivers,
   };
 };

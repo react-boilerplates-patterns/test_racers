@@ -1,25 +1,16 @@
-import React from "react";
-import {
-  createStackNavigator,
-  HeaderBackButton,
-} from "@react-navigation/stack";
-import { useHandlers } from "@hooks";
-import { DriversScreen } from "@screens/drivers";
-import { DriverProfileScreen } from "@screens/driver-profile";
-import { InitialNavigationScreen } from "../../screens/init-navigation";
+import React from 'react';
+import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
+import {useHandlers} from 'hooks';
+import {DriversScreen} from 'screens/drivers';
+import {DriverProfileScreen} from 'screens/driver-profile';
 
 const Stack = createStackNavigator();
 
 export const AppNavigator = () => {
-  const { navigateBack } = useHandlers();
+  const {navigateBack} = useHandlers();
 
   return (
-    <Stack.Navigator initialRouteName="NAVIGATION_NAVIGATOR">
-      <Stack.Screen
-        name="NAVIGATION_NAVIGATOR"
-        component={InitialNavigationScreen}
-        options={{ headerShown: false }}
-      />
+    <Stack.Navigator initialRouteName="DRIVERS_NAVIGATOR">
       <Stack.Screen
         name="DRIVERS_NAVIGATOR"
         component={DriversScreen}
@@ -36,14 +27,14 @@ export const AppNavigator = () => {
           ),
           headerShown: true,
           headerStyle: {
-            backgroundColor: "#f6f6f6",
+            backgroundColor: '#f6f6f6',
           },
-          headerTitle: "Profile",
-          headerTintColor: "black",
+          headerTitle: 'Profile',
+          headerTintColor: 'black',
           headerTitleStyle: {
-            fontWeight: "bold",
+            fontWeight: 'bold',
           },
-          gestureDirection: "horizontal",
+          gestureDirection: 'horizontal',
         }}
       />
     </Stack.Navigator>

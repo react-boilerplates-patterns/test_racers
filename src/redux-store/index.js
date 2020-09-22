@@ -1,13 +1,9 @@
-export * from "./store";
+export * from './store';
 
-export { rootReducer } from "./root-reducer";
+export {rootReducer} from './root-reducer';
 
-export { alertActions } from "./alert/actions";
-export { requestsActions } from "./requests/actions";
-export { applicationActions } from "./application/actions";
-export { navigationActions } from "./navigation/actions";
+export {alertActions} from './alert/actions';
+export {requestsActions} from './requests/actions';
 
-export { alertSelectors } from "./alert/selectors";
-export { applicationSelectors } from "./application/selectors";
-export { requestsSelectors } from "./requests/selectors";
-export { navigationSelectors } from "./navigation/selectors";
+export {alertSelectors} from './alert/selectors';
+export {requestsSelectors} from './requests/selectors';

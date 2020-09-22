@@ -1,21 +1,17 @@
-import { useDispatch } from "react-redux";
-import { useCallback, useEffect } from "react";
-import { requestsThunks } from "@thunks";
+import {useDispatch} from 'react-redux';
+import {useCallback, useEffect} from 'react';
+import {requestsActions} from 'redux-store';
 
-export const useGetDrivers = ({ driverId, season, limit }) => {
+export const useGetDrivers = () => {
   const dispatch = useDispatch();
 
   const getDrivers = useCallback(() => {
-    driverId !== "All" && driverId !== null
-      ? dispatch(
-          requestsThunks.fetchSpecificDriverThunk({ driverId, season, limit })
-        )
-      : dispatch(requestsThunks.fetchFirstDriversPageThunk({ season, limit }));
-  }, [dispatch, driverId, season, limit]);
+    dispatch(requestsActions.drivers.getFirstPaginated());
+  }, [dispatch]);
 
   useEffect(() => {
     getDrivers();
   }, [getDrivers]);
 
-  return { getDrivers };
+  return {getDrivers};
 };

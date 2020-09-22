@@ -1,4 +1,5 @@
-import * as drivers from "./drivers/selectors";
+import * as getDriversPaginated from './drivers/get-paginated/selectors';
+
 export const requestsSelectors = {
-  drivers: { ...drivers },
+  drivers: {...getDriversPaginated},
 };

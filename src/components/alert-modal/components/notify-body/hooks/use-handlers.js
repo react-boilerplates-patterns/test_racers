@@ -1,8 +1,8 @@
-import { useDispatch } from "react-redux";
-import { useCallback } from "react";
-import { alertActions } from "@redux-store";
-import { screenNames } from "@constants";
-import * as RootNavigation from "@routes";
+import {useDispatch} from 'react-redux';
+import {useCallback} from 'react';
+import {alertActions} from 'redux-store';
+import {screenNames} from 'project-constants';
+import * as RootNavigation from 'routes';
 
 export const useHandlers = () => {
   const dispatch = useDispatch();

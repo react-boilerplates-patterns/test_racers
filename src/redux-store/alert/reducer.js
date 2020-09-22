@@ -4,7 +4,7 @@ export const initialState = {
   isVisible: false,
   alertData: {
     title: null,
-    text: null,
+    message: null,
   },
 };
 

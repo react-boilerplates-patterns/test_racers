@@ -1,5 +1,13 @@
-import * as drivers from "./drivers/actions";
+import * as getDriverPaginated from './drivers/get-paginated/actions';
 
 export const requestsActions = {
-  drivers: { ...drivers.Actions },
+  drivers: {
+    ...getDriverPaginated.Actions,
+  },
+};
+
+export const requestActionTypes = {
+  drivers: {
+    ...getDriverPaginated.ActionTypes,
+  },
 };

@@ -1,7 +1,9 @@
-import { combineReducers } from "redux";
+import {combineReducers} from 'redux';
 
-import { getDriversReducer } from "./drivers/reducers";
+import {getDriversPaginatedReducer} from './drivers/get-paginated/reducers';
 
 export const requestsReducers = combineReducers({
-  drivers: getDriversReducer,
+  drivers: combineReducers({
+    getDriversPaginated: getDriversPaginatedReducer,
+  }),
 });
