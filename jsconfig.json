@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "jsx": "react-native",
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "paths": {
+      "hooks": ["./hooks"],
+      "redux-store": ["./redux-store/index.js"],
+      "thunks": ["./redux-store/root-thunks.js"],
+      "routes": ["./routes/index.js"],
+      "helpers": ["./helpers/index.js"],
+      "services": ["./services/index.js"],
+      "project-constants": ["./constants/index.js"],
+      "screens": ["./screens"],
+      "components": ["./components"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
